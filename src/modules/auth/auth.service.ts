@@ -1,7 +1,32 @@
 import bcrypt from "bcryptjs";
 import { pool } from "../../db";
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken"
 import config from "../../config";
+import type { Iuser } from "../user/user.interface";
+
+const registerUserIntoDB = async (payload: Iuser) => {
+    const { name, email, password, age } = payload;
+
+    const existingUser = await pool.query(
+        `SELECT id FROM users WHERE email=$1`,
+        [email],
+    );
+    if (existingUser.rows.length > 0) {
+        throw new Error("User already exists with this email");
+    }
+
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    const result = await pool.query(
+        `
+        INSERT INTO users(name, email, password, age) VALUES($1,$2,$3,$4)
+        RETURNING id, name, email, age, is_active, created_at, updated_at
+        `,
+        [name, email, hashPassword, age],
+    );
+
+    return result.rows[0];
+};
 
 const loginUserIntoDB = async (payload: {
     email: string;
@@ -46,5 +71,6 @@ const loginUserIntoDB = async (payload: {
 };
 
 export const authService = {
+    registerUserIntoDB,
     loginUserIntoDB,
 };
