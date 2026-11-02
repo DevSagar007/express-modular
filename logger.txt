@@ -4,3 +4,43 @@ Method -> GET - Time -> 1793559239190 - URL -> /
 Method -> GET - Time -> 1793559239517 - URL -> /favicon.ico
 
 Method -> GET - Time -> 1793559248470 - URL -> /api/users
+
+Method -> GET - Time -> 1793646670959 - URL -> /
+
+Method -> GET - Time -> 1793646671334 - URL -> /favicon.ico
+
+Method -> GET - Time -> 1793646679541 - URL -> /user/15
+
+Method -> GET - Time -> 1793647289896 - URL -> /products
+
+Method -> GET - Time -> 1793647294254 - URL -> /products/15
+
+Method -> GET - Time -> 1793647324996 - URL -> /products/15
+
+Method -> GET - Time -> 1793647327834 - URL -> /products/15
+
+Method -> GET - Time -> 1793647330532 - URL -> /products/15
+
+Method -> GET - Time -> 1793647346918 - URL -> /products/15
+
+Method -> GET - Time -> 1793647350313 - URL -> /products/1
+
+Method -> GET - Time -> 1793647374768 - URL -> /user
+
+Method -> GET - Time -> 1793647377487 - URL -> /users
+
+Method -> GET - Time -> 1793647385369 - URL -> /api/users
+
+Method -> GET - Time -> 1793647398615 - URL -> /api/users
+
+Method -> GET - Time -> 1793647403295 - URL -> /api/users
+
+Method -> GET - Time -> 1793647405384 - URL -> /api/users
+
+Method -> GET - Time -> 1793647410238 - URL -> /api/users
+
+Method -> GET - Time -> 1793647413636 - URL -> /api/users
+
+Method -> GET - Time -> 1793648845587 - URL -> /
+
+Method -> GET - Time -> 1793648852559 - URL -> /api/users

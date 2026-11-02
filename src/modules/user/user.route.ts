@@ -1,7 +1,9 @@
 import { Router } from "express";
 import { userController } from "./user.controller";
+import auth from "../../middleware/auth";
 
 const router = Router()
+
 
 // Create user
 router.post('/', userController.createUser);
@@ -10,7 +12,7 @@ router.post('/', userController.createUser);
 router.get("/", userController.getAllUsers);
 
 // Get single user
-router.get('/:id', userController.getSingleUser)
+router.get('/:id', auth, userController.getSingleUser)
 
 // Update user
 router.put('/:id', userController.updateUser)
