@@ -44,3 +44,11 @@ Method -> GET - Time -> 1793647413636 - URL -> /api/users
 Method -> GET - Time -> 1793648845587 - URL -> /
 
 Method -> GET - Time -> 1793648852559 - URL -> /api/users
+
+Method -> GET - Time -> 1793818206197 - URL -> /api/users
+
+Method -> GET - Time -> 1793818221326 - URL -> /api/users
+
+Method -> GET - Time -> 1793818254039 - URL -> /api/users
+
+Method -> GET - Time -> 1793818307067 - URL -> /api/users

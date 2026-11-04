@@ -3,11 +3,10 @@ import fs from "fs";
 
 const logger = (req: Request, res: Response, next: NextFunction) => {
     console.log(req.headers.authorization);
-    // console.log("Method - URL - Time:", req.method, req.url, Date.now());
-    // const log = `\nMethod -> ${req.method} - Time -> ${Date.now()} - URL -> ${req.url}\n`
-    // fs.appendFile("logger.txt", log, (err) => {
-    //     console.log(err);
-    // });
+    console.log("Method - URL - Time:", req.method, req.url, Date.now());
+    const log = `\nMethod -> ${req.method} - Time -> ${Date.now()} - URL -> ${req.url}\n`
+    fs.appendFile("logger.txt", log, (err) => {
+    });
     next();
 }
 
