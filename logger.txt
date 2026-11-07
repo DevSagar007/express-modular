@@ -202,3 +202,13 @@ Method -> POST - Time -> 1794078513298 - URL -> /api/auth/refresh-token
 Method -> POST - Time -> 1794078566042 - URL -> /api/auth/refresh-token
 
 Method -> POST - Time -> 1794078568624 - URL -> /api/auth/refresh-token
+
+Method -> POST - Time -> 1794079007969 - URL -> /api/auth/refresh-token
+
+Method -> POST - Time -> 1794079022191 - URL -> /api/auth/refresh-token
+
+Method -> POST - Time -> 1794079028515 - URL -> /api/auth/refresh-token
+
+Method -> GET - Time -> 1794079921543 - URL -> /api/users
+
+Method -> GET - Time -> 1794080362758 - URL -> /api/users

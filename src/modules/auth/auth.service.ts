@@ -64,12 +64,12 @@ const loginUserIntoDB = async (payload: {
     };
 
     const accessToken = jwt.sign(jwtpayload, config.jwt_secret, {
-        expiresIn: "1d",
-    });
+        expiresIn: config.access_expires_in,
+    } as jwt.SignOptions);
 
     const refreshToken = jwt.sign(jwtpayload, config.refresh_secret, {
-        expiresIn: "1d",
-    });
+        expiresIn: config.refresh_expires_in,
+    } as jwt.SignOptions);
 
     // return object
     return { accessToken, refreshToken };
@@ -117,12 +117,13 @@ const generateRefreshToken = async (token: string) => {
     };
 
     const accessToken = jwt.sign(jwtpayload, config.jwt_secret, {
-        expiresIn: "1d",
-    });
+        expiresIn: config.access_expires_in,
+    } as jwt.SignOptions);
     return { accessToken }
 }
 
 export const authService = {
     registerUserIntoDB,
     loginUserIntoDB,
+    generateRefreshToken,
 };
