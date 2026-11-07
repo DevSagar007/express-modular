@@ -9,6 +9,7 @@ const config = {
     connect_string: process.env.CONNECTIONSTRING as string,
     port: process.env.PORT,
     jwt_secret: process.env.jWT_SECRET as string,
+    refresh_secret: process.env.jWT_REFRESH_SECRET as string,
 }
 
 export default config
