@@ -75,6 +75,53 @@ const loginUserIntoDB = async (payload: {
     return { accessToken, refreshToken };
 };
 
+const generateRefreshToken = async (token: string) => {
+
+    // check token validation
+    if (!token) {
+        throw new Error("Unauthorized!!")
+    };
+
+    // token decoded
+    const decoded = jwt.verify(
+        token as string,
+        config.refresh_secret as string,
+    ) as jwt.JwtPayload;
+
+    // check user database
+    const userData = await pool.query(
+        `SELECT * FROM users WHERE email=$1`,
+        [decoded.email],
+    );
+
+    console.log(decoded);
+
+    // user are not found in database
+    if (userData.rows.length === 0) {
+        throw new Error("User not found !!")
+    }
+
+    const user = userData.rows[0];
+    // user are not active
+    if (!user?.is_active) {
+        throw new Error("Forbidden!!")
+    }
+
+    // Generate token
+    const jwtpayload = {
+        id: user.id,
+        name: user.name,
+        role: user.role,
+        is_active: user.is_active,
+        email: user.email,
+    };
+
+    const accessToken = jwt.sign(jwtpayload, config.jwt_secret, {
+        expiresIn: "1d",
+    });
+    return { accessToken }
+}
+
 export const authService = {
     registerUserIntoDB,
     loginUserIntoDB,
