@@ -3,6 +3,10 @@ import { pool } from "../../db";
 import jwt from "jsonwebtoken"
 import config from "../../config";
 import type { Iuser } from "../user/user.interface";
+import {
+    generateAccessToken,
+    generateRefreshToken as createRefreshToken,
+} from "../../utility/jwt";
 
 const registerUserIntoDB = async (payload: Iuser) => {
     const { name, email, password, age } = payload;
@@ -46,10 +50,8 @@ const loginUserIntoDB = async (payload: {
         throw new Error("invalid Credentials");
     }
     const user = userData.rows[0];
-    console.log(user);
 
     const matchPassword = await bcrypt.compare(password, user.password);
-    console.log(matchPassword);
     if (!matchPassword) {
         throw new Error("Invalid credential");
     }
@@ -63,13 +65,8 @@ const loginUserIntoDB = async (payload: {
         email: user.email,
     };
 
-    const accessToken = jwt.sign(jwtpayload, config.jwt_secret, {
-        expiresIn: config.access_expires_in,
-    } as jwt.SignOptions);
-
-    const refreshToken = jwt.sign(jwtpayload, config.refresh_secret, {
-        expiresIn: config.refresh_expires_in,
-    } as jwt.SignOptions);
+    const accessToken = generateAccessToken(jwtpayload);
+    const refreshToken = createRefreshToken(jwtpayload);
 
     // return object
     return { accessToken, refreshToken };
@@ -94,8 +91,6 @@ const generateRefreshToken = async (token: string) => {
         [decoded.email],
     );
 
-    console.log(decoded);
-
     // user are not found in database
     if (userData.rows.length === 0) {
         throw new Error("User not found !!")
@@ -116,9 +111,7 @@ const generateRefreshToken = async (token: string) => {
         email: user.email,
     };
 
-    const accessToken = jwt.sign(jwtpayload, config.jwt_secret, {
-        expiresIn: config.access_expires_in,
-    } as jwt.SignOptions);
+    const accessToken = generateAccessToken(jwtpayload);
     return { accessToken }
 }
 
