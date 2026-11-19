@@ -9,4 +9,11 @@ const main = () => {
         console.log(`Example app listening on port ${config.port}`)
     })
 }
-main();
+
+if (process.env.VERCEL) {
+    initDB()
+} else {
+    main();
+}
+
+export default app;
