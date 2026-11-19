@@ -44,4 +44,3 @@ export const initDB = async () => {
         console.log(error);
     }
 };
-initDB();
