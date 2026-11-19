@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "tsx watch ./src/server.ts",
+    "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +18,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.6",
     "@types/pg": "^8.23.1",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
@@ -27,6 +30,7 @@
     "dotenv": "^18.0.9",
     "express": "^5.3.0",
     "jsonwebtoken": "^9.0.3",
-    "pg": "^8.23.1"
+    "pg": "^8.23.1",
+    "tsup": "^9.0.0"
   }
 }
